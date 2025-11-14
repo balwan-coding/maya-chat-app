@@ -11,7 +11,7 @@ function App() {
         <div className=" bg-gray-700 h-full">
           <PanenList />
         </div>
-        <div className="flex flex-col border-l-2 border-gray-700">
+        <div className="flex flex-col border-l-2 border-gray-500">
           <ChataBox />
           <SendMsgBox />
         </div>
