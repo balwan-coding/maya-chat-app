@@ -15,7 +15,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 2,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -23,7 +23,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 3,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -31,7 +31,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 4,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -39,7 +39,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 5,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -47,7 +47,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 6,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -55,7 +55,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 7,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -63,7 +63,7 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
 
     {
-      userId: 1,
+      userId: 8,
       name: "Balwan Singh Rajput",
       userName: "@Balwan",
       profilePic: null,
@@ -75,7 +75,10 @@ const PanenList: React.FC<PanenListProps> = () => {
     <div className=" overflow-hidden ">
       {users.map((v) => {
         return (
-          <div className="w-full text-white h-16 flex gap-2 lowercase cursor-pointer border-b-2 border-gray-400 py-1 px-2">
+          <div
+            key={v.userId}
+            className="w-full text-white h-16 flex gap-2 lowercase cursor-pointer border-b-2 border-gray-400 py-1 px-2"
+          >
             <div
               className={`${
                 v.isOnlie ? "border-green-400" : "border-sky-500"
