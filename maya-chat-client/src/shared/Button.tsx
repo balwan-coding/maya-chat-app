@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 const btnType = {
-  primary: "text-white  bg-sky-600 ",
+  primary: "text-primary  bg-primary ",
   secondry: "text-black bg-white",
 } as const;
 
