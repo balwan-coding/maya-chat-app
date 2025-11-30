@@ -1,14 +1,16 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import type { Message } from "../types/msgTypes";
+import type { State } from "../store";
 interface ChatBoxProps {}
 const ChataBox: React.FC<ChatBoxProps> = () => {
-  const messages = useSelector((state: any) => state.messages);
+  const messages = useSelector((state: State) => state.message.messages);
+  console.log(messages);
 
   return (
     <div className="h-[90%] bg-gray-700 p-2">
       <ul className="flex flex-col gap-2">
-        {messages.map((v: Message, i: number) =>
+        {messages?.map((v: Message, i: number) =>
           v.userId === 1 ? (
             <div
               key={`${v.msg}${i}`}
