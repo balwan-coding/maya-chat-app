@@ -1,89 +1,135 @@
-import { memo } from "react";
+import { memo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+import Input from "../shared/Input";
+import Button from "../shared/Button";
+import StarScene from "./StarScene";
 
 interface authProps {}
 
 const Auth: React.FC<authProps> = () => {
+  const [isLogin, setIsLogin] = useState(true);
   return (
-    <div className="bg-gray-700 h-[calc(100vh-60px)]">
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-            alt="Your Company"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
-            Sign in to your account
-          </h2>
-        </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm/6 font-medium text-gray-100"
+    <div className="relative h-[calc(100vh-60px)]">
+      {" "}
+      <StarScene />
+      <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 pointer-events-none">
+        <div className="pointer-events-auto w-[500px] p-10  border border-white/10 rounded-[20px] shadow-[0_4px_30px_rgba(0,0,0,0.5)] text-white text-center">
+          <AnimatePresence mode="wait">
+            {isLogin ? (
+              <motion.div
+                key="singup"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="flex gap-4 flex-col "
               >
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  required
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                />
-              </div>
-            </div>
+                <form method="POST" className="flex gap-4 flex-col" action="">
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Fullname"
+                    placeholder="Enter your name"
+                    type="text"
+                    className="border-2 rounded-xl border-white w-full"
+                    name="name"
+                  />
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm/6 font-medium text-gray-100"
-                >
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-400 hover:text-indigo-300"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  required
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                />
-              </div>
-            </div>
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Fullname"
+                    placeholder="Enter your userName"
+                    type="text"
+                    className="border-2 rounded-xl border-white w-full"
+                    name="username"
+                  />
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Email"
+                    placeholder="Enter your Email"
+                    type="email"
+                    className="border-2 rounded-xl border-white w-full"
+                    name="eamil"
+                  />
 
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Phone Number"
+                    placeholder="Enter your phone number"
+                    type="number"
+                    className="border-2 rounded-xl border-white w-full"
+                  />
+
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Password"
+                    placeholder="Enter your password"
+                    type="password"
+                    className="border-2 rounded-xl border-white w-full"
+                  />
+                  <div className="w-full flex items-start gap-4">
+                    <Input
+                      containerClass=" flex gap-2 justify-center items-center"
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      children="Male"
+                    />
+                    <Input
+                      containerClass=" flex gap-2 justify-center items-center"
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      children="Female"
+                    />
+                  </div>
+
+                  <Button className="bg-sky-600" type="primary">
+                    Submit
+                  </Button>
+                </form>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="login"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="flex gap-4 flex-col"
               >
-                Sign in
-              </button>
-            </div>
-          </form>
+                {" "}
+                <form method="POST" className="flex gap-4 flex-col" action="">
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Email/UserName"
+                    placeholder="Enter your userName/email"
+                    type="text"
+                    className="border-2 rounded-xl border-white w-full"
+                    name="username"
+                  />
 
-          <p className="mt-10 text-center text-sm/6 text-gray-400">
-            Not a member?
-            <a
-              href="#"
-              className="font-semibold text-indigo-400 hover:text-indigo-300"
-            >
-              Start a 14 day free trial
-            </a>
-          </p>
+                  <Input
+                    containerClass="text-start flex flex-col gap-2"
+                    children="Password"
+                    placeholder="Enter your password"
+                    type="password"
+                    className="border-2 rounded-xl border-white w-full"
+                  />
+
+                  <Button className="bg-sky-600" type="primary">
+                    Submit
+                  </Button>
+                </form>
+              </motion.div>
+            )}
+
+            <p>
+              You {isLogin ? "don't have" : "have"} a acount please{" "}
+              <span
+                onClick={() => setIsLogin(!isLogin)}
+                className="text-sky-400 font-bold cursor-pointer hover:underline"
+              >
+                {isLogin ? "login" : "Signup"}
+              </span>
+            </p>
+          </AnimatePresence>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
-import { ADD_MESSAGE } from "../actions/addMessage";
-import { SET_MESSAGE } from "../actions/setMessage";
+import { produce } from "immer";
+import { ADD_MESSAGE, SET_MESSAGE } from "../actions/addMessage";
+
 import type { Message } from "../types/msgTypes";
 
 export interface messageState {
@@ -16,9 +17,14 @@ const messageReduser = (
 ): messageState => {
   switch (action.type) {
     case ADD_MESSAGE:
-      return { ...crrState, messages: [...crrState.messages, action.payload] };
+      return produce(crrState, (draft) => {
+        draft.messages.push(action.payload);
+      });
+
     case SET_MESSAGE:
-      return { ...crrState, messages: action.payload };
+      return produce(crrState, (draft) => {
+        draft.messages.push(action.payload);
+      });
     default:
       return crrState;
   }

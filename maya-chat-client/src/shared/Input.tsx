@@ -6,6 +6,10 @@ interface InputProps {
   type: string;
   className?: string;
   placeholder?: string;
+  name?: string;
+  id?: string;
+  children?: string;
+  containerClass?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -14,15 +18,24 @@ const Input: React.FC<InputProps> = ({
   type,
   className,
   placeholder,
+  id,
+  name,
+  children,
+  containerClass,
 }) => {
   return (
-    <input
-      className={`p-2 outline-none ${className} `}
-      type={type}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-    />
+    <div className={containerClass}>
+      <label htmlFor={id}>{children}</label>
+      <input
+        className={`p-2 outline-none ${className} `}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        id={id}
+        name={name}
+      />
+    </div>
   );
 };
 

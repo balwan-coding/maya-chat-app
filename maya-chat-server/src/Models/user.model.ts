@@ -8,6 +8,11 @@ const blogSchema = new Schema({
     require: true,
     unique: true,
   },
+  phoneNumber: {
+    type: Number,
+    require: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,
@@ -19,13 +24,16 @@ const blogSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ["male", "female", "souther"],
+    enum: ["male", "female", "outher"],
     require: true,
   },
 
   isOnline: {
     type: Boolean,
     default: false,
+  },
+  profilePhoto: {
+    type: String,
   },
 });
 

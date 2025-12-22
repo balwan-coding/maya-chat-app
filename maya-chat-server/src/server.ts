@@ -7,8 +7,8 @@ import dbConnect from "./Configs/db";
 import { APP_PORT, DB_URL, SESSION_SECRET } from "./Configs/env";
 import { errorHandler } from "./middlewares/errolHandler.middleware";
 import authRouter from "./Routes/auth.routes";
-import session from "express-session";
 import MongoStore from "connect-mongo";
+import session from "express-session";
 
 const app = express();
 app.use(express.json());
