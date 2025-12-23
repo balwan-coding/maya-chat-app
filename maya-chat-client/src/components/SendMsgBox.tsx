@@ -4,7 +4,7 @@ import Input from "../shared/Input";
 import { useDispatch } from "react-redux";
 import socket from "../services/socket";
 import type { Message } from "../types/msgTypes";
-import { addMessage } from "../actions/addMessage";
+import { addMessage } from "../store/slices/messagesSlice";
 
 interface SendMsgBoxProps {}
 

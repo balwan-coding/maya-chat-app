@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import type { Message } from "../types/msgTypes";
-import type { State } from "../store";
+import type { State } from "../store/store";
 interface ChatBoxProps {}
 const ChataBox: React.FC<ChatBoxProps> = () => {
-  const messages = useSelector((state: State) => state.message.messages);
+  const messages = useSelector((state: State) => state.messages);
   console.log(messages);
 
   return (
