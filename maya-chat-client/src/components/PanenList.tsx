@@ -1,6 +1,8 @@
-import React, { memo } from "react";
+import React, { memo, useRef } from "react";
 import type { Users } from "../types/msgTypes";
 import Avtar from "../assets/avtar.jpg";
+import { motion } from "framer-motion";
+import { IoChatbubbleEllipses } from "react-icons/io5";
 
 interface PanenListProps {}
 
@@ -71,13 +73,24 @@ const PanenList: React.FC<PanenListProps> = () => {
     },
   ];
 
+  const palnenList = useRef(null);
+
   return (
-    <div className=" overflow-hidden ">
+    <div ref={palnenList} className="overflow-hidden relative">
+      <motion.div
+        drag
+        dragElastic={0.1}
+        dragConstraints={palnenList}
+        whileDrag={{ cursor: "grabbing" }}
+        className="absolute text-sky-400 text-5xl z-50 bottom-10  right-2"
+      >
+        <IoChatbubbleEllipses />
+      </motion.div>
       {users.map((v) => {
         return (
           <div
             key={v.userId}
-            className="w-full text-white h-16 flex gap-2 lowercase cursor-pointer border-b-2 border-gray-400 py-1 px-2"
+            className="w-full text-white h-16 flex gap-2 lowercase cursor-pointer border-b-2 border-gray-400 py-1 px-2 hover:bg-gray-600"
           >
             <div
               className={`${

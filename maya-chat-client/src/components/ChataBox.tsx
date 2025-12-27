@@ -1,10 +1,12 @@
 import React, { memo } from "react";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 import type { Message } from "../types/msgTypes";
 import type { State } from "../store/store";
-interface ChatBoxProps {}
-const ChataBox: React.FC<ChatBoxProps> = () => {
-  const messages = useSelector((state: State) => state.messages);
+import { getMessagesSelector } from "../store/selectors/messages";
+interface ChatBoxProps {
+  messages: Message[];
+}
+const ChataBox: React.FC<ChatBoxProps> = ({ messages }) => {
   console.log(messages);
 
   return (
@@ -32,4 +34,8 @@ const ChataBox: React.FC<ChatBoxProps> = () => {
   );
 };
 
-export default memo(ChataBox);
+const mapStateToProp = (state: State) => ({
+  messages: getMessagesSelector(state),
+});
+
+export default connect(mapStateToProp)(memo(ChataBox));
